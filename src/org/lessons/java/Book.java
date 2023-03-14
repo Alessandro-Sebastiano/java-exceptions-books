@@ -9,7 +9,7 @@ public class Book {
 
     public Book(String title, int numPages, String author, String publisher) {
         setTitle(title);
-        setNumPages(numPages);
+        setPages(numPages);
         setAuthor(author);
         setPublisher(publisher);
     }
@@ -29,7 +29,7 @@ public class Book {
         return pages;
     }
 
-    public void setNumPages(int numPages) {
+    public void setPages(int numPages) {
         if (numPages <= 0) {
             throw new IllegalArgumentException("Numero pagine non valido");
         }
