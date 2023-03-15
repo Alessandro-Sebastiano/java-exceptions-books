@@ -1,8 +1,8 @@
 package org.lessons.java;
 
-import java.lang.invoke.StringConcatFactory;
-import java.util.Arrays;
-import java.util.IllegalFormatException;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -19,6 +19,8 @@ public class Main {
 
         int i = 0;
         while (i < books.length){
+            int count = i + 1;
+            System.out.println("Inserisci i dati del libro n " + count);
 
             String bookName = "";
             while (bookName.isEmpty()){
@@ -62,8 +64,30 @@ public class Main {
             }
         }
 
-        for (Book book: books) {
-            System.out.println(book);
+        input.close();
+
+        File file = new File("books.txt");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        if(file.exists()){
+            System.out.println("File creato correttamente");
+            System.out.println(file.getPath());
+        }else {
+            System.out.println("Nessun file creato");
+        }
+
+        try {
+            FileWriter writer = new FileWriter("books.txt");
+            for (Book book: books) {
+                writer.write(book.toString() + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e);
         }
 
     }
