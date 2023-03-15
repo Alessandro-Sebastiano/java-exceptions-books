@@ -14,12 +14,17 @@ public class Book {
         setPublisher(publisher);
     }
 
+
+    private boolean isEmptyString(String str){
+        return str == null || str.trim().isEmpty();
+    }
+
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
-        if (title == null || title.isEmpty()) {
+        if (isEmptyString(title)) {
             throw new IllegalArgumentException("Titolo non valido");
         }
         this.title = title;
@@ -41,7 +46,7 @@ public class Book {
     }
 
     public void setAuthor(String author) {
-        if (author == null || author.isEmpty()) {
+        if (isEmptyString(author)) {
             throw new IllegalArgumentException("Autore non valido");
         }
         this.author = author;
@@ -52,7 +57,7 @@ public class Book {
     }
 
     public void setPublisher(String publisher) {
-        if (publisher == null || publisher.isEmpty()) {
+        if (isEmptyString(publisher)) {
             throw new IllegalArgumentException("Editore non valido");
         }
         this.publisher = publisher;
